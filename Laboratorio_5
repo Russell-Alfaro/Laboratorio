@@ -1,0 +1,150 @@
+### Ejercicio 01
+###Escriba una función que reciba un conjunto de números y devuelva un conjunto con los números primos.
+
+def es_primo(numero):
+    if numero <= 1:
+        return False
+    for i in range(2, int(numero**0.5) + 1):
+        if numero % i == 0:
+            return False
+    return True
+
+
+def numeros_primos(conjunto):
+    primos = set()
+    for numero in conjunto:
+        if es_primo(numero):
+            primos.add(numero)
+    return primos
+
+### Ejemplo de uso
+conjunto_numeros = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+primos_en_conjunto = numeros_primos(conjunto_numeros)
+print("Números primos en el conjunto:", primos_en_conjunto)
+
+### Ejercicio 02 
+#Escriba una función que reciba un conjunto de palabras y devuelva un conjunto con las palabras que
+#comienzan con una letra determinada.
+
+def palabras_que_comienzan_con_letra(conjunto_palabras, letra):
+    palabras_seleccionadas = set()
+
+    for palabra in conjunto_palabras:
+        if palabra.startswith(letra):
+            palabras_seleccionadas.add(palabra)
+
+    return palabras_seleccionadas
+conjunto_palabras = {"matematica", "geometria", "algebra", "economia", "matrices"}
+letra_inicial = "m"
+resultado = palabras_que_comienzan_con_letra(conjunto_palabras, letra_inicial)
+
+print(f"Palabras que comienzan con '{letra_inicial}': {resultado}")
+
+### Ejercicio 03
+###Escriba una función que reciba un conjunto de números y devuelva un conjunto con los números que
+###son divisibles por un número determinado.
+
+def numeros_divisibles(conjunto, divisor):
+    divisibles = set()
+    for numero in conjunto:
+        if numero % divisor == 0:
+            divisibles.add(numero)
+    return divisibles
+
+# Ejemplo de uso
+conjunto_numeros = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+divisor = 2
+numeros_divisibles_por_2 = numeros_divisibles(conjunto_numeros, divisor)
+print(f"Números en el conjunto divisibles por {divisor}:", numeros_divisibles_por_2)
+
+
+#########EJERCICIO 04
+#Escriba una función que reciba dos conjuntos de números y devuelva un conjunto con los números que
+#están en ambos conjuntos
+def igualdad_numeros(num_1, num_2):
+
+    return num_1.intersection(num_2)
+num_1 = {1,2,3,4,5}
+num_2 = {3,4,5,6,7}
+resultado_2= igualdad_numeros(num_1,num_2)
+print(f"Los numeros en comunes entre los dos conjuntos son  {resultado_2}")
+
+### Ejercicio 05
+###Escriba una función que reciba dos conjuntos de números y devuelva un conjunto con los números que
+###están en el primer conjunto pero no7 en el segundo.
+
+
+
+######### EJERCICIO 06
+###Escriba una función que reciba dos conjuntos de números y devuelva un conjunto con los números que
+###están en el segundo conjunto pero no en el primero.
+
+def desigualdad_numeros(num_3,num_4):
+    new = num_4.difference(num_3)
+    return new
+num_3 ={1,2,3,4,5,6,7,8,9}
+num_4 ={2,4,6,8,10,11,12}
+
+resultado_3= desigualdad_numeros(num_3,num_4)
+print(f"Los numeros que estan en el segundo grupo pero no en el primero son {resultado_3}")
+
+### Ejercicio 07
+###Escriba una función que reciba un conjunto de palabras y devuelva un conjunto con las palabras que son anagramas
+
+
+
+######## EJERCICIO 08
+def palindromos_v(palabra):
+    return palabra == palabra[::-1]
+
+def palindromos_conjunto(cadena):
+    palindromos= set()
+    for palabra in cadena:
+        if palindromos_v(palabra):
+            palindromos.add(palabra)
+    return palindromos
+
+cadena={"carro","comer","rapar","reconocer"}
+resultado = palindromos_conjunto(cadena)
+print(f"Los palindromos  del conjunto son {resultado}")
+
+### Ejercicio 09
+### Escriba una función que reciba un conjunto de palabras y devuelva un conjunto con las palabras que
+###tienen una longitud determinada.
+
+###########EJERCICIO 10
+def letra_determinada(cadena_1,letra):
+    contenedor = set()
+    for i in cadena_1:
+        if letra in i:
+            contenedor.add(i)
+    return contenedor
+cadena_1={"amarillo","azul","celeste","rojo","rosado","jade","morado"}
+letra ="o"
+resultado =letra_determinada(cadena_1,letra)
+print(f"{resultado}")
+
+### Ejercicio 11
+### Escriba una función que reciba un conjunto de números y devuelva un conjunto con los números que
+### están ordenados de menor a mayor.
+
+
+###########EJERCICIO 12
+###Escriba una función que reciba un conjunto de números y devuelva un conjunto con los números que
+###están ordenados de menor a mayor.
+
+def revertir(ordenados):
+    reversion= list(ordenados)[::-1]
+    conjunto_nuevo= set(reversion)
+    return conjunto_nuevo
+def ordenamiento(numeros):
+    ordenado = list(numeros)
+    ordenado.sort()
+    ordenados = set(ordenado)
+    return revertir(ordenados)
+
+
+numeros = {2,3,43,6,8,78,9}
+resultado_4 = ordenamiento(numeros)
+print(f"El nuevo conjunto es {resultado_4}")
+
