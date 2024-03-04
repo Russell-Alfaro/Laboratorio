@@ -100,6 +100,33 @@ print(f"Los numeros que estan en el segundo grupo pero no en el primero son {res
 ### Ejercicio 07
 ###Escriba una función que reciba un conjunto de palabras y devuelva un conjunto con las palabras que son anagramas
 
+#Escriba una función que reciba un conjunto de palabras y devuelva un conjunto con las palabras que son
+#anagramas
+def encontrar_anagramas(conjunto_palabras):
+    anagramas = set()
+
+    # Crear un diccionario para almacenar palabras anagramas
+    anagramas_dict = {}
+
+    for palabra in conjunto_palabras:
+        # Ordenar las letras de la palabra y convertir a tupla
+        palabra_ordenada = tuple(sorted(palabra))
+
+        # Agregar la palabra al conjunto de anagramas correspondiente
+        anagramas_dict.setdefault(palabra_ordenada, set()).add(palabra)
+
+    # Filtrar las palabras que tienen más de un anagrama
+    anagramas = {palabra for conjunto in anagramas_dict.values() if len(conjunto) > 1 for palabra in conjunto}
+
+    return anagramas
+
+# Ejemplo de uso
+conjunto_palabras_ejemplo = {"ramon", "alvaro", "iman", "top", "pot", "opt", "car", "arc"}
+resultado_anagramas = encontrar_anagramas(conjunto_palabras_ejemplo)
+
+# Mostrar el resultado
+print("Conjunto de palabras:", conjunto_palabras_ejemplo)
+print("Palabras que son anagramas:", resultado_anagramas)
 
 ######## EJERCICIO 08
 def palindromos_v(palabra):
@@ -238,8 +265,82 @@ primos_ordenados = numeros_primos_ordenados(conjunto_numeros)
 print("Conjunto de números primos ordenados de menor a mayor:")
 print(primos_ordenados)
 
-###
+### Ejercicio 16
 
+def palabras_palindromos_ordenadas(conjunto_palabras):
+    palindromos = {palabra for palabra in conjunto_palabras if palabra == palabra[::-1]}
+    palindromos_ordenados = sorted(palindromos)
+    return palindromos_ordenados
+
+# Ejemplo
+conjunto_palabras_ejemplo = {"radar", "civic", "hello", "level", "world", "deified"}
+resultado_palindromos_ordenados = palabras_palindromos_ordenadas(conjunto_palabras_ejemplo)
+
+# Mostrar el resultado
+print("Conjunto de palabras:", conjunto_palabras_ejemplo)
+print("Palíndromos ordenados:", resultado_palindromos_ordenados)
+
+### Ejercicio 17
+
+def palabras_longitud_ordenadas(conjunto_palabras, longitud):
+    palabras_longitud = {palabra for palabra in conjunto_palabras if len(palabra) == longitud}
+    palabras_longitud_ordenadas = sorted(palabras_longitud)
+    return palabras_longitud_ordenadas
+
+# Ejemplo
+conjunto_palabras_ejemplo = {"apple", "banana", "kiwi", "orange", "grape", "peach"}
+longitud_ejemplo = 5
+resultado_palabras_longitud = palabras_longitud_ordenadas(conjunto_palabras_ejemplo, longitud_ejemplo)
+
+# Mostrar el resultado
+print("Conjunto de palabras:", conjunto_palabras_ejemplo)
+print(f"Palabras de longitud {longitud_ejemplo} ordenadas:", resultado_palabras_longitud)
+
+### Ejercicio 18
+
+def palabras_con_letra_ordenadas(conjunto_palabras, letra):
+    palabras_con_la_letra = {palabra for palabra in conjunto_palabras if letra in palabra}
+    palabras_con_la_letra_ordenadas = sorted(palabras_con_la_letra, reverse=True)
+    return palabras_con_la_letra_ordenadas
+
+# Ejemplo
+conjunto_palabras_ejemplo = {"apple", "banana", "kiwi", "orange", "grape", "peach"}
+letra_ejemplo = "a"
+resultado_palabras_con_letra = palabras_con_letra_ordenadas(conjunto_palabras_ejemplo, letra_ejemplo)
+
+# Mostrar el resultado
+print("Conjunto de palabras:", conjunto_palabras_ejemplo)
+print(f"Palabras que contienen la letra '{letra_ejemplo}' ordenadas:", resultado_palabras_con_letra)
+
+
+### Ejercicio 19
+
+def numeros_ordenados_sin_duplicados(conjunto_numeros):
+    numeros_ordenados = sorted(set(conjunto_numeros))
+    return numeros_ordenados
+
+# Ejemplo
+conjunto_numeros_ejemplo = {3,12,2,3,6,5, 1, 5, 2, 2, 4, 5}
+
+resultado_numeros_ordenados = numeros_ordenados_sin_duplicados(conjunto_numeros_ejemplo)
+
+print("Conjunto de números:", conjunto_numeros_ejemplo)
+print("Números ordenados sin duplicados:", resultado_numeros_ordenados)
+
+### Ejercicio 20
+
+def palabras_palindromos_longitud_ordenadas(conjunto_palabras, longitud):
+    palindromos_longitud = {palabra for palabra in conjunto_palabras if palabra == palabra[::-1] and len(palabra) == longitud}
+    palindromos_longitud_ordenados = sorted(palindromos_longitud)
+    return palindromos_longitud_ordenados
+
+# Ejemplo
+conjunto_palabras_ejemplo = {"radar", "civic", "level", "hello", "deified", "world"}
+longitud_ejemplo = 5
+resultado_palindromos_longitud = palabras_palindromos_longitud_ordenadas(conjunto_palabras_ejemplo, longitud_ejemplo)
+
+print("Conjunto de palabras:", conjunto_palabras_ejemplo)
+print(f"Palíndromos de longitud {longitud_ejemplo} ordenados:", resultado_palindromos_longitud)
 
 
 

@@ -422,6 +422,7 @@ class Pila:
             return self.item[-1]
         else: print("La pila esta vacia")
 def decimal_a_binario(numero):
+    numero = int(numero)
     pila = Pila()
     binario = ""
     while numero > 0:
@@ -705,10 +706,81 @@ print(f"El resultado de la expresión '{expresion}' es: {resultado}")
 ### Ejercicio 13
 ### Utilizar una pila para comprobar si una palabra o frase es un palíndromo.
 
+class Pila:
+    def __init__(self):
+        self.items = []
 
+    def is_empty(self):
+        return len(self.items) == 0
+
+    def apilar(self, elemento):
+        self.items.append(elemento)
+
+    def desapilar(self):
+        if not self.is_empty():
+            return self.items.pop()
+        else:
+            print("La pila está vacía.")
+
+def es_palindromo(palabra):
+    pila = Pila()
+    palabra = palabra.lower()  # Convertir la palabra a minúsculas para comparar sin distinción de mayúsculas y minúsculas
+
+    # Agregar cada caracter de la palabra a la pila
+    for caracter in palabra:
+        if caracter.isalnum():  # Ignorar caracteres no alfanuméricos
+            pila.apilar(caracter)
+
+    # Comparar los caracteres de la palabra original con los de la pila
+    for caracter in palabra:
+        if caracter.isalnum():  # Ignorar caracteres no alfanuméricos
+            if caracter != pila.desapilar():
+                return False
+
+    return True
+
+# Ejemplo de uso
+palabra = "Anita lava la tina"
+if es_palindromo(palabra):
+    print(f'"{palabra}" es un palíndromo.')
+else:
+    print(f'"{palabra}" no es un palíndromo.')
 
 ### Ejercicio 14
 ### Implementar un sistema simple de "deshacer" utilizando dos pilas, una para las acciones y otra para los deshaceres.
 
+class UndoSystem:
+    def __init__(self):
+        self.acciones = []
+        self.deshaceres = []
 
-### Ejercicio 15
+    def realizar_accion(self, accion):
+        print(f"Realizando acción: {accion}")
+        self.acciones.append(accion)
+
+    def deshacer_accion(self):
+        if self.acciones:
+            accion_deshacer = self.acciones.pop()
+            print(f"Deshaciendo acción: {accion_deshacer}")
+            self.deshaceres.append(accion_deshacer)
+        else:
+            print("No hay acciones para deshacer.")
+
+    def rehacer_accion(self):
+        if self.deshaceres:
+            accion_rehacer = self.deshaceres.pop()
+            print(f"Rehaciendo acción: {accion_rehacer}")
+            self.acciones.append(accion_rehacer)
+        else:
+            print("No hay acciones para rehacer.")
+
+# Ejemplo de uso
+sistema_undo = UndoSystem()
+
+sistema_undo.realizar_accion("Escribir texto A")
+sistema_undo.realizar_accion("Borrar texto")
+sistema_undo.realizar_accion("Escribir texto B")
+
+sistema_undo.deshacer_accion()  # Deshacer la última acción ("Escribir texto B")
+sistema_undo.rehacer_accion()   # Rehacer la última acción deshecha ("Escribir texto B")
+

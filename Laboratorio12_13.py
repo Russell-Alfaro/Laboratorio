@@ -90,6 +90,57 @@ cola.procesar_pedido()
 ###Desarrolla un programa que encuentre el camino más corto a través de un laberinto. Utiliza una cola
 ###para realizar un recorrido en anchura (BFS) desde el punto de inicio hasta el punto de destino.
 
+from collections import deque
+
+def encontrar_camino_mas_corto(laberinto, inicio, destino):
+    # Dimensiones del laberinto
+    filas = len(laberinto)
+    columnas = len(laberinto[0])
+
+    # Movimientos posibles: arriba, abajo, izquierda, derecha
+    movimientos = [(1, 0), (-1, 0), (0, 1), (0, -1)]
+
+    # Cola para el recorrido BFS
+    cola = deque([(inicio, 0)])  # Cada elemento de la cola es una tupla (coordenada, distancia)
+
+    # Conjunto para marcar las celdas visitadas
+    visitado = set()
+    visitado.add(inicio)
+
+    # Bucle principal del BFS
+    while cola:
+        (x, y), distancia = cola.popleft()
+
+        # Verificar si alcanzamos el destino
+        if (x, y) == destino:
+            return distancia
+
+        # Explorar los movimientos posibles
+        for dx, dy in movimientos:
+            nx, ny = x + dx, y + dy
+            if 0 <= nx < filas and 0 <= ny < columnas and laberinto[nx][ny] == 0 and (nx, ny) not in visitado:
+                cola.append(((nx, ny), distancia + 1))
+                visitado.add((nx, ny))
+
+    # Si no se encuentra un camino al destino
+    return -1
+
+# Ejemplo de uso
+laberinto = [
+    [0, 1, 0, 0, 0],
+    [0, 0, 0, 1, 0],
+    [1, 1, 0, 1, 0],
+    [0, 1, 0, 0, 0],
+    [0, 0, 0, 1, 1]
+]
+inicio = (0, 0)
+destino = (4, 4)
+
+distancia_mas_corta = encontrar_camino_mas_corto(laberinto, inicio, destino)
+if distancia_mas_corta != -1:
+    print(f"El camino más corto desde {inicio} hasta {destino} es de {distancia_mas_corta} pasos.")
+else:
+    print(f"No hay un camino desde {inicio} hasta {destino}.")
 
 
 ### Ejercicio 04 
