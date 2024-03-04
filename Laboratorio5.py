@@ -73,7 +73,16 @@ print(f"Los numeros en comunes entre los dos conjuntos son  {resultado_2}")
 ###Escriba una función que reciba dos conjuntos de números y devuelva un conjunto con los números que
 ###están en el primer conjunto pero no7 en el segundo.
 
+def diferencia_conjuntos(conjunto1, conjunto2):
+    diferencia = conjunto1 - conjunto2
+    return diferencia
 
+# Ejemplo de uso
+conjunto1 = {1, 2, 3, 4, 5}
+conjunto2 = {3, 4, 5, 6, 7}
+resultado = diferencia_conjuntos(conjunto1, conjunto2)
+print("Diferencia entre los conjuntos:")
+print(resultado)
 
 ######### EJERCICIO 06
 ###Escriba una función que reciba dos conjuntos de números y devuelva un conjunto con los números que
@@ -90,7 +99,6 @@ print(f"Los numeros que estan en el segundo grupo pero no en el primero son {res
 
 ### Ejercicio 07
 ###Escriba una función que reciba un conjunto de palabras y devuelva un conjunto con las palabras que son anagramas
-
 
 
 ######## EJERCICIO 08
@@ -112,6 +120,17 @@ print(f"Los palindromos  del conjunto son {resultado}")
 ### Escriba una función que reciba un conjunto de palabras y devuelva un conjunto con las palabras que
 ###tienen una longitud determinada.
 
+def palabras_longitud(conjunto_palabras, longitud):
+    palabras_con_longitud = {palabra for palabra in conjunto_palabras if len(palabra) == longitud}
+    return palabras_con_longitud
+
+# Ejemplo de uso
+conjunto_palabras = {"casa", "perro", "gato", "playa", "sol", "luna"}
+longitud = 4
+resultado = palabras_longitud(conjunto_palabras, longitud)
+print(f"Palabras en el conjunto de longitud {longitud}:")
+print(resultado)
+
 ###########EJERCICIO 10
 def letra_determinada(cadena_1,letra):
     contenedor = set()
@@ -127,6 +146,7 @@ print(f"{resultado}")
 ### Ejercicio 11
 ### Escriba una función que reciba un conjunto de números y devuelva un conjunto con los números que
 ### están ordenados de menor a mayor.
+
 
 
 ###########EJERCICIO 12
@@ -147,4 +167,21 @@ def ordenamiento(numeros):
 numeros = {2,3,43,6,8,78,9}
 resultado_4 = ordenamiento(numeros)
 print(f"El nuevo conjunto es {resultado_4}")
+
+### Ejercicio 13
+###Escriba una función que reciba un conjunto de números y devuelva un conjunto con los números que
+###están duplicados.
+
+
+
+
+
+
+
+
+
+
+
+
+
 
