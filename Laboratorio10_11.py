@@ -8,10 +8,13 @@ try:
     print("La edad es correcta")
 except AssertionError as error:
     print("Error: ", error)
+
+
 ###EJERCICIO 3
 
 def Validad_Rango(calificacion):
-    assert 0<= int(Calificacion) <= 20, "La calificacion solo puede estar entre 0 y 20"
+    nota = calificacion
+    assert 0<= int(nota) <= 20, "La calificacion solo puede estar entre 0 y 20"
 
 b = float(input("Introducir la calificacion: "))
 try:
@@ -49,15 +52,10 @@ try:
     print("La funcion es correcta")
 except AssertionError as error:
     print("Error:", error)
+    
 ###EJERCICIO 11
 
-class nodo:
-    def __init__(self, dato):
-        self.dato = dato
-        self.siguiente = None
-class ListaEnlazada:
-    def __init__(self):
-        self.primero= None
+
 
 
 

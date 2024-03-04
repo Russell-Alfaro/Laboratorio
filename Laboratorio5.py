@@ -147,7 +147,15 @@ print(f"{resultado}")
 ### Escriba una función que reciba un conjunto de números y devuelva un conjunto con los números que
 ### están ordenados de menor a mayor.
 
+def numeros_ordenados(conjunto):
+    lista_ordenada = sorted(conjunto)
+    return set(lista_ordenada)
 
+# Ejemplo de uso
+conjunto_numeros = {3, 1, 5, 2, 4}
+numeros_ordenados_set = numeros_ordenados(conjunto_numeros)
+print("Conjunto de números ordenados de menor a mayor:")
+print(numeros_ordenados_set)
 
 ###########EJERCICIO 12
 ###Escriba una función que reciba un conjunto de números y devuelva un conjunto con los números que
@@ -172,11 +180,65 @@ print(f"El nuevo conjunto es {resultado_4}")
 ###Escriba una función que reciba un conjunto de números y devuelva un conjunto con los números que
 ###están duplicados.
 
+def numeros_duplicados(conjunto):
+    numeros_duplicados = set()
+    numeros_vistos = set()
 
+    for numero in conjunto:
+        if numero in numeros_vistos:
+            numeros_duplicados.add(numero)
+        else:
+            numeros_vistos.add(numero)
 
+    return numeros_duplicados
 
+# Ejemplo de uso
+conjunto_numeros = {1, 2, 3, 3, 4, 5, 6, 6, 7, 8}
+numeros_duplicados_set = numeros_duplicados(conjunto_numeros)
+print("Conjunto de números duplicados:")
+print(numeros_duplicados_set)
 
+### Ejercicio 14
+### Escriba una función que reciba un conjunto de números y devuelva un conjunto con los números que no
+###están duplicados.
 
+def numeros_no_duplicados(conjunto):
+    numeros_no_duplicados = {numero for numero in conjunto if list(conjunto).count(numero) == 1}
+    return numeros_no_duplicados
+
+# Ejemplo de uso
+conjunto_numeros = {1, 2, 3, 3, 4, 5, 6, 6, 7, 8}
+numeros_no_duplicados_set = numeros_no_duplicados(conjunto_numeros)
+print("Conjunto de números no duplicados:")
+print(numeros_no_duplicados_set)
+
+### Ejercicio 15
+###Escriba una función que reciba un conjunto de números y devuelva un conjunto con los números que
+###son primos y están ordenados de menor a mayor.
+
+def es_primo(numero):
+    if numero <= 1:
+        return False
+    if numero == 2:
+        return True
+    if numero % 2 == 0:
+        return False
+    for i in range(3, int(numero ** 0.5) + 1, 2):
+        if numero % i == 0:
+            return False
+    return True
+def numeros_primos_ordenados(conjunto):
+    primos = {numero for numero in conjunto if es_primo(numero)}
+    primos_ordenados = sorted(primos)
+    return primos_ordenados
+
+# Ejemplo de uso
+conjunto_numeros = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+primos_ordenados = numeros_primos_ordenados(conjunto_numeros)
+print("Conjunto de números primos ordenados de menor a mayor:")
+print(primos_ordenados)
+
+###
 
 
 

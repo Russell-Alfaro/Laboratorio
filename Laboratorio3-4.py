@@ -193,7 +193,7 @@ import numpy as np
 matriz_aleatoria = np.random.rand(100, 100)
 
 print("Matriz de números aleatorios de tamaño 100x100:")
-print(matriz_aleatoria)
+print(matriz_aleatoria)  
 
 
 ### Ejercicio 02
@@ -220,5 +220,51 @@ print("Media:", media)
 print("Mediana:", mediana)
 print("Desviación estándar:", desviacion_estandar)
 
+### Ejercicio 03
+###Escribe una función que encuentre el elemento máximo de una matriz.
+
+def encontrar_maximo(matriz):
+    # Utiliza la función np.max() para encontrar el valor máximo en la matriz
+    maximo = np.max(matriz)
+    return maximo
+
+# Ejemplo de uso
+matriz = np.array([[1, 2, 3],
+                   [4, 5, 6],
+                   [7, 8, 9]])
+
+maximo = encontrar_maximo(matriz)
+print("Elemento máximo de la matriz:", maximo)
+
+### Ejercicio 04
+###Escribe una función que encuentre la submatriz de mayor suma de una matriz.
+
+
+### Ejercicio 05
+###Encontrar la maatriz covarianza
+
+import numpy as np
+
+def matriz_covarianza(matriz1, matriz2):
+    # Concatenar las dos matrices a lo largo del eje 0 para formar una matriz conjunta
+    matriz_conjunta = np.vstack((matriz1, matriz2))
+    
+    # Calcular la matriz de covarianza
+    covarianza = np.cov(matriz_conjunta)
+    
+    return covarianza
+
+# Ejemplo de uso
+matriz1 = np.array([[1, 2, 3],
+                    [4, 5, 6],
+                    [7, 8, 9]])
+
+matriz2 = np.array([[9, 8, 7],
+                    [6, 5, 4],
+                    [3, 2, 1]])
+
+matriz_cov = matriz_covarianza(matriz1, matriz2)
+print("Matriz de covarianza entre las dos matrices:")
+print(matriz_cov)
 
 
