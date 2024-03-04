@@ -181,3 +181,44 @@ matriz = np.array([[1, 2, 3],
 
 media = media_matriz(matriz)
 print("Media de los elementos de la matriz:", media)
+
+#### Parte 2
+import random
+### Ejercicio 01
+### Crea una matriz de números aleatorios de tamaño 100x100.
+
+import numpy as np
+
+# Crear una matriz de números aleatorios de tamaño 100x100
+matriz_aleatoria = np.random.rand(100, 100)
+
+print("Matriz de números aleatorios de tamaño 100x100:")
+print(matriz_aleatoria)
+
+
+### Ejercicio 02
+###
+
+import numpy as np
+
+# Crear una matriz de ejemplo
+matriz = np.random.rand(5, 5)
+
+# Calcular la media
+media = np.mean(matriz)
+
+# Calcular la mediana
+mediana = np.median(matriz)
+
+# Calcular la desviación estándar
+desviacion_estandar = np.std(matriz)
+
+# Imprimir los resultados
+print("Matriz:")
+print(matriz)
+print("Media:", media)
+print("Mediana:", mediana)
+print("Desviación estándar:", desviacion_estandar)
+
+
+
