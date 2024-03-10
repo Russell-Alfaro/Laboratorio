@@ -147,37 +147,255 @@ else:
 ###Implementa un sistema de gestión de tareas que permita agregar tareas, marcar tareas como
 ###completadas y mostrar la próxima tarea pendiente.
 
+class SistemaGestionTareas:
+    def __init__(self):
+        self.tareas_pendientes = []
 
+    def agregar_tarea(self, tarea):
+        self.tareas_pendientes.append(tarea)
+        print(f"Tarea agregada: {tarea}")
+
+    def completar_tarea(self):
+        if self.tareas_pendientes:
+            tarea_completada = self.tareas_pendientes.pop(0)
+            print(f"Tarea completada: {tarea_completada}")
+        else:
+            print("No hay tareas pendientes para completar.")
+
+    def mostrar_proxima_tarea_pendiente(self):
+        if self.tareas_pendientes:
+            print(f"Próxima tarea pendiente: {self.tareas_pendientes[0]}")
+        else:
+            print("No hay tareas pendientes.")
+
+# Ejemplo de uso
+sistema_tareas = SistemaGestionTareas()
+
+sistema_tareas.agregar_tarea("Hacer la compra")
+sistema_tareas.agregar_tarea("Llamar al cliente")
+sistema_tareas.agregar_tarea("Enviar informe")
+
+sistema_tareas.mostrar_proxima_tarea_pendiente()
+
+sistema_tareas.completar_tarea()
+
+sistema_tareas.mostrar_proxima_tarea_pendiente()
 
 
 
 ### Ejercicio 05 
 ###Implementar una función que cuente la cantidad de nodos en el árbol.
 
+class Nodo:
+    def __init__(self, valor):
+        self.valor = valor
+        self.hijos = []
+
+def contar_nodos(arbol):
+    if not arbol:
+        return 0
+    else:
+        cantidad_nodos = 1  # Contar el nodo actual
+        for hijo in arbol.hijos:
+            cantidad_nodos += contar_nodos(hijo)  # Recursivamente contar los nodos de cada hijo
+        return cantidad_nodos
+
+# Ejemplo de uso
+# Creamos un árbol de ejemplo
+raiz = Nodo(1)
+nodo2 = Nodo(2)
+nodo3 = Nodo(3)
+nodo4 = Nodo(4)
+nodo5 = Nodo(5)
+
+raiz.hijos = [nodo2, nodo3]
+nodo2.hijos = [nodo4]
+nodo3.hijos = [nodo5]
+
+# Contamos los nodos del árbol
+cantidad_nodos = contar_nodos(raiz)
+print("Cantidad de nodos en el árbol:", cantidad_nodos)
+
 
 ### Ejercicio 06 
 ### Implementar una función que cuente la cantidad de nodos hoja (que no tienen hijos).
 
+class Nodo:
+    def __init__(self, valor):
+        self.valor = valor
+        self.hijos = []
 
+def contar_nodos_hoja(arbol):
+    if not arbol:
+        return 0
+    elif not arbol.hijos:
+        return 1  # El nodo es una hoja
+    else:
+        cantidad_nodos_hoja = 0
+        for hijo in arbol.hijos:
+            cantidad_nodos_hoja += contar_nodos_hoja(hijo)
+        return cantidad_nodos_hoja
+
+# Ejemplo de uso
+# Creamos un árbol de ejemplo
+raiz = Nodo(1)
+nodo2 = Nodo(2)
+nodo3 = Nodo(3)
+nodo4 = Nodo(4)
+nodo5 = Nodo(5)
+nodo6 = Nodo(6)
+
+raiz.hijos = [nodo2, nodo3]
+nodo2.hijos = [nodo4]
+nodo3.hijos = [nodo5, nodo6]
+
+# Contamos los nodos hoja del árbol
+cantidad_nodos_hoja = contar_nodos_hoja(raiz)
+print("Cantidad de nodos hoja en el árbol:", cantidad_nodos_hoja)
 
 ### Ejercicio 07 
 ###Implementar una función que cuente la cantidad de nodos internos (que tienen al menos un hijo).
 
+class Nodo:
+    def __init__(self, valor):
+        self.valor = valor
+        self.hijos = []
+
+def contar_nodos_internos(arbol):
+    if not arbol:
+        return 0
+    elif not arbol.hijos:
+        return 0  # El nodo es una hoja
+    else:
+        cantidad_nodos_internos = 1  # Contar el nodo actual como interno
+        for hijo in arbol.hijos:
+            cantidad_nodos_internos += contar_nodos_internos(hijo)
+        return cantidad_nodos_internos
+
+# Ejemplo de uso
+# Creamos un árbol de ejemplo
+raiz = Nodo(1)
+nodo2 = Nodo(2)
+nodo3 = Nodo(3)
+nodo4 = Nodo(4)
+nodo5 = Nodo(5)
+nodo6 = Nodo(6)
+
+raiz.hijos = [nodo2, nodo3]
+nodo2.hijos = [nodo4]
+nodo3.hijos = [nodo5, nodo6]
+
+# Contamos los nodos internos del árbol
+cantidad_nodos_internos = contar_nodos_internos(raiz)
+print("Cantidad de nodos internos en el árbol:", cantidad_nodos_internos)
 
 ### Ejercicio 08 
 ### Implementar una función que calcule la altura del árbol (la longitud del camino más largo desde la raíz
 ### hasta una hoja).
+
+class Nodo:
+    def __init__(self, valor):
+        self.valor = valor
+        self.hijos = []
+
+def altura_arbol(arbol):
+    if not arbol:
+        return 0
+    elif not arbol.hijos:
+        return 1
+    else:
+        alturas_subarboles = [altura_arbol(hijo) for hijo in arbol.hijos]
+        return max(alturas_subarboles) + 1
+
+
+# Creamos un árbol de ejemplo
+raiz = Nodo(1)
+nodo2 = Nodo(2)
+nodo3 = Nodo(3)
+nodo4 = Nodo(4)
+nodo5 = Nodo(5)
+nodo6 = Nodo(6)
+
+raiz.hijos = [nodo2, nodo3]
+nodo2.hijos = [nodo4]
+nodo3.hijos = [nodo5, nodo6]
+
+# Calculamos la altura del árbol
+altura = altura_arbol(raiz)
+print("Altura del árbol:", altura)
 
 
 ### Ejercicio 09 
 ### Implementar una función que calcule la profundidad de un nodo (la longitud del camino desde la raíz
 ### hasta el nodo).
 
+class Nodo:
+    def __init__(self, valor):
+        self.valor = valor
+        self.hijos = []
 
+def profundidad_nodo(raiz, valor_nodo, profundidad=0):
+    if raiz is None:
+        return -1  # Si no hay nodo, la profundidad es -1
+    if raiz.valor == valor_nodo:
+        return profundidad  # Si encontramos el nodo, devolvemos la profundidad actual
+    for hijo in raiz.hijos:
+        profundidad_hijo = profundidad_nodo(hijo, valor_nodo, profundidad + 1)
+        if profundidad_hijo != -1:
+            return profundidad_hijo
+    return -1  # Si el nodo no está en el subárbol, devolvemos -1
+
+# Ejemplo de uso
+# Creamos un árbol de ejemplo
+raiz = Nodo(1)
+nodo2 = Nodo(2)
+nodo3 = Nodo(3)
+nodo4 = Nodo(4)
+nodo5 = Nodo(5)
+nodo6 = Nodo(6)
+
+raiz.hijos = [nodo2, nodo3]
+nodo2.hijos = [nodo4]
+nodo3.hijos = [nodo5, nodo6]
+
+# Calculamos la profundidad del nodo con valor 5
+valor_nodo = 5
+profundidad = profundidad_nodo(raiz, valor_nodo)
+print(f"Profundidad del nodo {valor_nodo}: {profundidad}")
 
 ### Ejercicio 10 
 ### Implementar una función que encuentre el nodo con el valor mínimo en el árbol.
 
+class Nodo:
+    def __init__(self, valor):
+        self.valor = valor
+        self.hijos = []
+
+def encontrar_minimo(raiz):
+    if raiz is None:
+        return float('inf')  # Si el árbol está vacío, devolvemos infinito
+    min_valor = raiz.valor
+    for hijo in raiz.hijos:
+        min_hijo = encontrar_minimo(hijo)
+        min_valor = min(min_valor, min_hijo)
+    return min_valor
+
+# Ejemplo de uso
+# Creamos un árbol de ejemplo
+raiz = Nodo(10)
+nodo2 = Nodo(5)
+nodo3 = Nodo(15)
+nodo4 = Nodo(3)
+nodo5 = Nodo(7)
+nodo6 = Nodo(12)
+
+raiz.hijos = [nodo2, nodo3]
+nodo2.hijos = [nodo4, nodo5]
+nodo3.hijos = [nodo6]
+
+# Encontramos el valor mínimo en el árbol
+minimo = encontrar_minimo(raiz)
+print("Valor mínimo en el árbol:", minimo)
 
 ### Ejercicio 11 
 ### Implementar una función que encuentre el nodo con el valor máximo en el árbol.
